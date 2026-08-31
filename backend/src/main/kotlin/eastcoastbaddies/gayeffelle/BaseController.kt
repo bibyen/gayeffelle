@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/api")
 class BaseController {
 
-    @GetMapping("/ping")
-    fun ping(): String = "pong"
+    @GetMapping("/mm")
+    fun ping(): String = "ww"
 
 }
