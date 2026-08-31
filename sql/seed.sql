@@ -1,8 +1,8 @@
 INSERT INTO afl_players (first_name, last_name) VALUES
-  ('John', 'Smith'),
-  ('Sarah', 'Jones'),
-  ('David', 'Miller'),
-  ('Emily', 'Davis'),
+  ('Adam', 'Chen'),
+  ('Fatcent', 'Huller'),
+  ('DANIEL', 'Nottodowidis'),
+  ('Sarah', 'Snook'),
   ('James', 'Wilson'),
   ('Jessica', 'Taylor'),
   ('Michael', 'Anderson'),
