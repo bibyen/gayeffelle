@@ -1,0 +1,52 @@
+name: Code Quality & Auto-Format (CI)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# give workflow permission to write automated formatting commits back to the repo
+permissions:
+  contents: write
+
+jobs:
+  format-and-lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v7
+        with:
+          # fetch full history so git can commit and push successfully
+          ref: ${{ github.head_ref }}
+
+      - name: setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: install dependencies
+        run: npm ci
+
+      - name: auto-format code with prettier
+        # Adjust this path pattern if your source files are located elsewhere
+        run: npx prettier --write "src/**/*.{ts,tsx,js,jsx,json,css}"
+
+      - name: commit and push Formatted Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "style(${{ github.head_ref || github.ref_name }}): auto-format code via GitHub Actions"
+          branch: ${{ github.head_ref || github.ref_name }}
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run TypeScript Type Check
+        run: npm run type-check
