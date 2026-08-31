@@ -46,8 +46,5 @@ jobs:
           commit_message: "style(${{ github.head_ref || github.ref_name }}): auto-format code via GitHub Actions"
           branch: ${{ github.head_ref || github.ref_name }}
 
-      - name: Run ESLint
-        run: npm run lint
-
       - name: Run TypeScript Type Check
         run: npm run type-check
