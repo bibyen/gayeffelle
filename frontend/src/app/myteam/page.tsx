@@ -79,8 +79,14 @@ export default function MyTeam() {
                     left: player.left,
                   }}
                 >
-                  {/* Blank bobblehead face icon placeholder */}
-                  <div style={styles.bobbleHeadCircle}></div>
+                  {/* add icon image from /public */}
+
+                  {/* <div style={styles.bobbleHeadCircle}> */}
+                  <img
+                    src="/tharamscaybie.png"
+                    alt={player.label}
+                    style={styles.bobbleHeadCircle}
+                  />
                   <div style={styles.bobbleBody}></div>
                 </button>
               ))}
@@ -173,20 +179,17 @@ const styles: { [key: string]: React.CSSProperties } = {
     transition: "transform 0.1s ease",
   },
   bobbleHeadCircle: {
-    width: "14px",
-    height: "14px",
-    backgroundColor: "#e0e0e0",
-    borderRadius: "50%",
-    border: "2px solid #333",
-    boxShadow: "0 2px 4px rgba(0,0,0,0.3)",
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
   },
   bobbleBody: {
     width: "18px",
     height: "10px",
     backgroundColor: "#1976d2",
-    borderRadius: "4px 4px 0 0",
+    borderRadius: "5px 5px 0 0",
     border: "2px solid #333",
-    borderTop: "none",
+    // borderTop: "none",
     marginTop: "-1px",
   },
 };
