@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 export default function MyTeam() {
   // State tracking which player bobblehead was clicked
-  const [clickedPlayer, setClickedPlayer] = useState<string | null>(null);
+  const [hoveredPlayer, setHoveredPlayer] = useState<string | null>(null);
 
   // Core 18 standard AFL player positions
   const defaultPositions = [
@@ -31,16 +31,23 @@ export default function MyTeam() {
     <html>
       <body>
         <div>
-          <header>
+          <div
+            style={{
+              height: "200px",
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
             <h1>Welcome to the east coat gang app!</h1>
             <p>The frontend is running perfectly.</p>
-            {clickedPlayer && (
+            {hoveredPlayer && (
               <div style={styles.alert}>
-                Clicked bobblehead position: <strong>{clickedPlayer}</strong>
+                Bobblehead position: <strong>{hoveredPlayer}</strong>
               </div>
             )}
-          </header>
-
+          </div>
           <main style={styles.main}>
             {/* Simple AFL Oval Field */}
             <div style={styles.field}>
@@ -67,11 +74,12 @@ export default function MyTeam() {
 
               {/* Clickable Blank Bobbleheads */}
               {defaultPositions.map((player) => (
-                <button
+                <div
                   key={player.id}
-                  onClick={() =>
-                    setClickedPlayer(`${player.label} (${player.id})`)
+                  onMouseEnter={() =>
+                    setHoveredPlayer(`${player.label} (${player.id})`)
                   }
+                  onMouseLeave={() => setHoveredPlayer(null)}
                   title={player.label}
                   style={{
                     ...styles.bobblehead,
@@ -79,16 +87,13 @@ export default function MyTeam() {
                     left: player.left,
                   }}
                 >
-                  {/* add icon image from /public */}
-
-                  {/* <div style={styles.bobbleHeadCircle}> */}
                   <img
                     src="/tharamscaybie.png"
                     alt={player.label}
                     style={styles.bobbleHeadCircle}
                   />
                   <div style={styles.bobbleBody}></div>
-                </button>
+                </div>
               ))}
             </div>
           </main>
