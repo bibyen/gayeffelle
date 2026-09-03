@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 export default function MyTeam() {
-  // State tracking which player bobblehead was clicked
+  // State tracking which player bobblehead was hovered over
   const [hoveredPlayer, setHoveredPlayer] = useState<string | null>(null);
 
   // Core 18 standard AFL player positions
@@ -72,7 +72,7 @@ export default function MyTeam() {
                 <div style={styles.behindPost}></div>
               </div>
 
-              {/* Clickable Blank Bobbleheads */}
+              {/* Hoverable Bobbleheads */}
               {defaultPositions.map((player) => (
                 <div
                   key={player.id}
@@ -194,7 +194,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     backgroundColor: "#1976d2",
     borderRadius: "5px 5px 0 0",
     border: "2px solid #333",
-    // borderTop: "none",
     marginTop: "-1px",
   },
 };
