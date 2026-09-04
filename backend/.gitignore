@@ -44,3 +44,7 @@ target/
 
 ### Kotlin ###
 .kotlin
+
+### Local env overrides (keep .env.example tracked) ###
+.env
+!.env.example
